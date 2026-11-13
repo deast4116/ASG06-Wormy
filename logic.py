@@ -191,8 +191,10 @@ def isOppositeDirection(current, new):
         isOppositeDirection(RIGHT, UP)     ->  False
         isOppositeDirection(RIGHT, RIGHT)  ->  False   (same is NOT opposite)
     """
-    # TODO: implement this function
-    pass
+    return (current == UP and new == DOWN) or \
+           (current == DOWN and new == UP) or \
+           (current == LEFT and new == RIGHT) or \
+           (current == RIGHT and new == LEFT)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
