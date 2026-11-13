@@ -85,8 +85,8 @@ def isWallCollision(wormCoords):
         worm = [{'x': 32, 'y': 10}, ...]   ->  True   (past right wall)
         worm = [{'x': 10, 'y': 10}, ...]   ->  False  (safe)
     """
-    # TODO: implement this function
-    pass
+    head = wormCoords[0]
+    return head['x'] < 0 or head['x'] >= CELLWIDTH or head['y'] < 0 or head['y'] >= CELLHEIGHT
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -162,8 +162,7 @@ def getScore(wormCoords):
         len(wormCoords) == 3  ->  0   (no apples eaten yet)
         len(wormCoords) == 7  ->  4   (4 apples eaten)
     """
-    # TODO: implement this function
-    pass
+    return max(0, len(wormCoords) - 3)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
