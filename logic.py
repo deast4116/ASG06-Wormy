@@ -110,8 +110,9 @@ def isSelfCollision(wormCoords):
                 {'x':5,'y':6}, {'x':5,'y':5}]
         isSelfCollision(worm)  ->  True   (head matches last segment)
     """
-    # TODO: implement this function
-    pass
+    head = wormCoords[0]
+    return head in wormCoords[1:]
+
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -135,8 +136,8 @@ def hasEatenApple(wormCoords, apple):
         apple = {'x': 10, 'y': 10}   ->  True
         apple = {'x': 11, 'y': 10}   ->  False
     """
-    # TODO: implement this function
-    pass
+    head = wormCoords[0]
+    return head == apple
 
 
 # ─────────────────────────────────────────────────────────────────────────────
