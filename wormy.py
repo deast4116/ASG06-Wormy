@@ -200,6 +200,24 @@ def runGame():
 
         wormCoords.insert(0, getNewHead(wormCoords, direction))
 
+        if isWallCollision(wormCoords):
+            return
+
+        if isSelfCollision(wormCoords):
+            return
+
+        if hasEatenApple(wormCoords, apple):
+            apple = getRandomLocation()
+        else:
+            del wormCoords[-1]
+
+        DISPLAYSURF.fill(BGCOLOR)
+        drawGrid(DISPLAYSURF)
+        drawWorm(DISPLAYSURF, wormCoords, direction)
+        drawApple(DISPLAYSURF, apple)
+        drawScore(DISPLAYSURF, BASICFONT, getScore(wormCoords))
+        pygame.display.update()
+        FPSCLOCK.tick(FPS)
 
 
 if __name__ == '__main__':
