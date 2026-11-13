@@ -2,8 +2,7 @@
 All Pygame drawing and rendering functions.
 Surfaces and fonts are passed as parameters — no globals imported.
 ================================================================================
-YOUR NAME  : ___________________________
-STUDENT ID : ___________________________
+YOUR NAME  : Dallas East
 ================================================================================
 Implement drawWorm() and drawApple() below (Tasks 8 and 9).
 All other functions are provided — do NOT modify them.

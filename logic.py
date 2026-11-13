@@ -50,8 +50,15 @@ def getNewHead(wormCoords, direction):
         - Do NOT modify wormCoords.
         - Return a brand-new dict; do not reuse the existing head dict.
     """
-    # TODO: implement this function
-    pass
+    head = wormCoords[0]
+    if direction == RIGHT:
+        return {'x': head['x'] + 1, 'y': head['y']}
+    elif direction == LEFT:
+        return {'x': head['x'] - 1, 'y': head['y']}
+    elif direction == UP:
+        return {'x': head['x'], 'y': head['y'] - 1}
+    elif direction == DOWN:
+        return {'x': head['x'], 'y': head['y'] + 1}
 
 
 # ─────────────────────────────────────────────────────────────────────────────
