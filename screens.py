@@ -5,7 +5,7 @@ Provided — do NOT modify
 """
 
 import pygame
-from pygame.locals import *
+from pygame.locals import QUIT, KEYUP, K_ESCAPE
 from constants import WINDOWWIDTH, WINDOWHEIGHT, BGCOLOR, FPS, WHITE, GREEN
 
 

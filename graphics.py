@@ -49,8 +49,35 @@ def drawWorm(DISPLAYSURF, wormCoords, direction=RIGHT):
         wormCoords (list): Current worm segments; index 0 is the head.
         direction  (str):  Current movement direction (for eye orientation).
     """
-    # TODO: implement this function
-    pass
+    for index, coord in enumerate(wormCoords):
+        px = coord['x'] * CELLSIZE
+        py = coord['y'] * CELLSIZE
+        color = HEADGREEN if index == HEAD else GREEN
+        pygame.draw.rect(
+            DISPLAYSURF, DARKGREEN,
+            pygame.Rect(px + 1, py + 1, CELLSIZE - 2, CELLSIZE - 2),
+            border_radius=6,
+        )
+        pygame.draw.rect(
+            DISPLAYSURF, color,
+            pygame.Rect(px + 4, py + 4, CELLSIZE - 8, CELLSIZE - 8),
+            border_radius=4,
+        )
+
+        if index == HEAD:
+            if direction in (LEFT, RIGHT):
+                eye_positions = [(px + 7, py + 6), (px + 7, py + 14)]
+                pupil_offset = (3 if direction == RIGHT else -3, 0)
+            else:
+                eye_positions = [(px + 6, py + 7), (px + 14, py + 7)]
+                pupil_offset = (0, 3 if direction == DOWN else -3)
+
+            for eye_x, eye_y in eye_positions:
+                pygame.draw.circle(DISPLAYSURF, WHITE, (eye_x, eye_y), 3)
+                pygame.draw.circle(
+                    DISPLAYSURF, BLACK,
+                    (eye_x + pupil_offset[0], eye_y + pupil_offset[1]), 1,
+                )
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -78,8 +105,16 @@ def drawApple(DISPLAYSURF, coord):
         DISPLAYSURF  : Active pygame display surface.
         coord (dict): {'x': int, 'y': int} grid position of the apple.
     """
-    # TODO: implement this function
-    pass
+    px = coord['x'] * CELLSIZE
+    py = coord['y'] * CELLSIZE
+    center = (px + CELLSIZE // 2, py + CELLSIZE // 2 + 1)
+    pygame.draw.circle(DISPLAYSURF, DARKGREEN, center, CELLSIZE // 2 - 2)
+    pygame.draw.circle(DISPLAYSURF, RED, center, CELLSIZE // 2 - 3)
+    pygame.draw.ellipse(
+        DISPLAYSURF, LEAF_GREEN,
+        pygame.Rect(px + CELLSIZE // 2, py + 2, 8, 5),
+    )
+    pygame.draw.circle(DISPLAYSURF, APPLE_SHINE, (px + 7, py + 7), 2)
 
 
 # ─────────────────────────────────────────────────────────────────────────────

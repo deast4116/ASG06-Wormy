@@ -61,7 +61,19 @@ Run the tests :  pytest test_wormy.py -v
 import random
 import pygame
 import sys
-from pygame.locals import *
+from pygame.locals import (
+    QUIT,
+    KEYDOWN,
+    K_LEFT,
+    K_RIGHT,
+    K_UP,
+    K_DOWN,
+    K_a,
+    K_d,
+    K_w,
+    K_s,
+    K_ESCAPE,
+)
 
 from constants import (
     FPS, WINDOWWIDTH, WINDOWHEIGHT, BGCOLOR, CELLSIZE,
@@ -168,13 +180,13 @@ def runGame():
     """
     startx = random.randint(5, CELLWIDTH - 6)
     starty = random.randint(5, CELLHEIGHT - 6)
+    direction = RIGHT if startx <= CELLWIDTH // 2 else LEFT
 
     wormCoords = [
         {'x': startx, 'y': starty},
-        {'x': startx - 1, 'y': starty},
-        {'x': startx - 2, 'y': starty},
+        {'x': startx - 1 if direction == RIGHT else startx + 1, 'y': starty},
+        {'x': startx - 2 if direction == RIGHT else startx + 2, 'y': starty},
     ]
-    direction = RIGHT
     apple = getRandomLocation()
 
     while True:
