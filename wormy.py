@@ -176,7 +176,7 @@ def runGame():
             drawApple(DISPLAYSURF, apple)
             drawScore(DISPLAYSURF, BASICFONT, getScore(wormCoords))
             pygame.display.update()
-            FPSCLOCK.tick(FPS)
+            FPSCLOCK.tick(FPS // 2)
     """
     startx = random.randint(5, CELLWIDTH - 6)
     starty = random.randint(5, CELLHEIGHT - 6)
