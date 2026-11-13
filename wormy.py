@@ -166,8 +166,40 @@ def runGame():
             pygame.display.update()
             FPSCLOCK.tick(FPS)
     """
-    # TODO: implement this function
-    pass
+    startx = random.randint(5, CELLWIDTH - 6)
+    starty = random.randint(5, CELLHEIGHT - 6)
+
+    wormCoords = [
+        {'x': startx, 'y': starty},
+        {'x': startx - 1, 'y': starty},
+        {'x': startx - 2, 'y': starty},
+    ]
+    direction = RIGHT
+    apple = getRandomLocation()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                terminate()
+            elif event.type == KEYDOWN:
+                if event.key == K_LEFT or event.key == K_a:
+                    new_dir = LEFT
+                elif event.key == K_RIGHT or event.key == K_d:
+                    new_dir = RIGHT
+                elif event.key == K_UP or event.key == K_w:
+                    new_dir = UP
+                elif event.key == K_DOWN or event.key == K_s:
+                    new_dir = DOWN
+                elif event.key == K_ESCAPE:
+                    terminate()
+                else:
+                    continue
+
+                if not isOppositeDirection(direction, new_dir):
+                    direction = new_dir
+
+        wormCoords.insert(0, getNewHead(wormCoords, direction))
+
 
 
 if __name__ == '__main__':
